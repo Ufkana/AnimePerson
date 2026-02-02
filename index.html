@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аниме дежурства ✨</title>
+  <style>
+    :root {
+      --bg: #7a0a00;
+      --card: rgba(47, 1, 51, 0.248);
+      --text: #f7eaff;
+      --accent-kafka: #c084fc;
+      --accent-gerta: #8264c8;
+      --accent-rem: #38bdf8;
+      --accent-alisa: #a5f3fc;
+      --accent-sparkle: #ec4899;
+      --accent-kaguya: #b91c1c;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 20% 20%, #2a93cb, transparent 55%),
+        radial-gradient(circle at 80% 80%, #28b3f8, transparent 45%),
+        linear-gradient(160deg, #060011, #7cc7d9);
+      color: var(--text);
+      font-family: system-ui, sans-serif;
+      padding: 3rem 1rem;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 3.5rem;
+      text-shadow: 0 0 30px #d48cff88;
+      letter-spacing: 1px;
+    }
+
+    .schedule {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.9rem;
+    }
+.side-image {
+  position: fixed;
+  top: 68%;
+  transform: translateY(-50%);
+  width: 280px;
+  opacity: 0.85;
+  pointer-events: none;
+  filter: drop-shadow(0 0 35px rgba(58, 90, 220, 0.5));
+  transition: opacity 0.4s ease;
+}
+
+.side-image img {
+  width: 100%;
+  border-radius: 24px;
+}
+
+.side-image.left {
+  left: -70px;
+  top: 580px;
+  
+}
+
+.side-image.right {
+  right: -15px;
+}
+
+@media (max-width: 1100px) {
+  .side-image {
+    display: none;
+  }
+}
+    .card {
+      display: flex;
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,160,255,.25);
+      box-shadow: 0 12px 45px rgba(0,0,0,.75);
+      transition: all .4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.025);
+      box-shadow: 0 20px 60px rgba(0,0,0,.9);
+    }
+
+    .day {
+      padding: 1.2rem 1.4rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      color: white;
+      font-size: 1.45rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      flex-shrink: 0;
+      min-width: 60px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+
+    .card:hover .day {
+      filter: brightness(1.15);
+    }
+
+    .inner {
+      padding: 1.6rem;
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      flex-shrink: 0;
+      transition: all 0.4s;
+    }
+
+    .card:hover .avatar {
+      transform: scale(1.08);
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name {
+      font-size: 1.9rem;
+      font-weight: 700;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+      margin-bottom: 0.3rem;
+      color: var(--accent);
+    }
+
+    .anime {
+      font-size: 1.05rem;
+      opacity: 0.82;
+      line-height: 1.35;
+    }
+
+    /* Персонажи — цвета для .day */
+    .card-kafka   { --accent: var(--accent-kafka); }
+    .card-gerta   { --accent: var(--accent-gerta); }
+    .card-rem     { --accent: var(--accent-rem);   }
+    .card-alisa   { --accent: var(--accent-alisa); }
+    .card-sparkle { --accent: var(--accent-sparkle);}
+    .card-kaguya  { --accent: var(--accent-kaguya); }
+
+    .card-kafka   .day { background: linear-gradient(180deg, #e9d5ff, var(--accent-kafka), #7e22ce); }
+    .card-gerta   .day { background: linear-gradient(180deg, #c4b5fd, var(--accent-gerta), #6d28d9); }
+    .card-rem     .day { background: linear-gradient(180deg, #bae6fd, var(--accent-rem), #0284c7); }
+    .card-alisa   .day { background: linear-gradient(180deg, #e0f2fe, var(--accent-alisa), #0891b2); }
+    .card-sparkle .day { background: linear-gradient(180deg, #fbcfe8, var(--accent-sparkle), #be185d); }
+    .card-kaguya  .day { background: linear-gradient(180deg, #fecaca, var(--accent-kaguya), #7f1d1d); }
+
+    @media (max-width: 820px) {
+      .card { flex-direction: column; }
+      .day {
+        writing-mode: horizontal-tb;
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        min-width: auto;
+      }
+      .inner { flex-direction: column; text-align: center; padding: 1.8rem; }
+      .avatar { width: 140px; height: 140px; }
+    }
+  </style>
+</head>
+<body>
+    <div class="side-image left">
+  <img src="https://i.postimg.cc/gJLqCfwZ/image.png">
+</div>
+
+<div class="side-image right">
+  <img src="https://i.postimg.cc/Gh4KGT3N/image.png ">
+</div>
+
+
+  <h1>🌸Расписание дежурств вайфу🌸</h1>
+
+  <div class="schedule">
+
+    <div class="card card-kafka">
+      <div class="day">ПОНЕДЕЛЬНИК</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/MGs2XjpX/kafka.jpg" alt="Кафка" onerror="this.src='https://via.placeholder.com/128/000/fff?text=Кафка';">
+        </div>
+        <div>
+          <div class="name">Кафка</div>
+          <div class="anime">Honkai: Star Rail</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-gerta">
+      <div class="day">ВТОРНИК</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/PJQMr1dD/gerta-kurukuru.jpg';">
+        </div>
+        <div>
+          <div class="name">Великая Герта</div>
+          <div class="anime">Honkai: Star Rail</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-rem">
+      <div class="day">СРЕДА</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/3RBB3g8p/rem.jpg';">
+        </div>
+        <div>
+          <div class="name">Рем</div>
+          <div class="anime">Re:Zero − Starting Life in Another World</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-alisa">
+      <div class="day">ЧЕТВЕРГ</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/G3DDPPwW/ala.jpg" alt="Алиса Кудзё" onerror="this.src='https://via.placeholder.com/128/000/fff?text=Алиса';">
+        </div>
+        <div>
+          <div class="name">Алиса Кудзё</div>
+          <div class="anime">Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-sparkle">
+      <div class="day">ПЯТНИЦА</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/7PtR7k43/iiskorka.jpg" alt="Sparkle" onerror="this.src='https://via.placeholder.com/128/000/fff?text=Sparkle';">
+        </div>
+        <div>
+          <div class="name">Искорка</div>
+          <div class="anime">Honkai: Star Rail</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-kaguya">
+      <div class="day">СУББОТА</div>
+      <div class="inner">
+        <div class="avatar">
+          <img src="https://i.postimg.cc/qBNP1R1k/mau.jpg" alt="Кагуя" onerror="this.src='https://via.placeholder.com/128/000/fff?text=Кагуя';">
+        </div>
+        <div>
+          <div class="name">Кагуя Синомия</div>
+          <div class="anime">Kaguya-sama: Love is War</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
