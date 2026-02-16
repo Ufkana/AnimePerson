@@ -66,6 +66,22 @@
 
 
   <script>
+    function randomWaifu() {
+
+  const pages = [
+    "k.htm",
+    "r.htm",
+    "Alice.htm",
+    "Marine.htm",
+    "Kana.htm"
+  ];
+
+  const random = Math.floor(Math.random() * pages.length);
+
+  window.location.href = pages[random];
+
+}
+
     const menuToggle = document.querySelector('.menu-toggle');
     const sidebar = document.querySelector('.sidebar');
     const overlay = document.querySelector('.overlay');
@@ -91,6 +107,7 @@
 
 </body>
 </html>
+
 
 
 
