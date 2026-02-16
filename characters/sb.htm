@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Микаса Аккерман | Биография</title>
+  <link rel="icon" href="teto.png">
+  <link rel="stylesheet" href="../style.css">  <!-- предполагаем, что style.css в корне, а персонажи в /characters/ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../WF.mp4" type="video/mp4">  <!-- путь подкорректируй если нужно -->
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+
+<div class="overlay"></div>
+
+<!-- Кнопка "обратно" в неоновом стиле -->
+<a href="../index.html" class="back-button neon-btn">← Назад</a>
+
+<!-- Основной блок биографии -->
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Сэйбер</h1>
+      <div class="bio-subtitle">Fate/stay night</div>
+    </div>
+
+    <div class="bio-content">
+      <section>
+  <h2>Биография</h2>
+  <p>
+    Сэйбер (Saber) — один из самых иконических слуг в <strong>Fate/stay night</strong> и всей франшизе Type-Moon. Её истинное имя — **Артурия Пендрагон** (Artoria Pendragon), легендарный **Король Артур** в женском воплощении. Она была призвана как Слуга класса Saber в Четвёртой и Пятой Войнах Святого Грааля.
+  </p>
+  <p>
+    Артурия родилась в эпоху хаоса после падения Римской империи, как дочь короля Утера Пендрагона. Чтобы унаследовать трон (по пророчеству нужен был сын), она скрывала свой пол и воспитывалась как рыцарь. Вытащив меч Калибурн из камня, она стала королём Британии, объединила страну и правила под именем Артур, скрывая свою истинную природу даже от ближайших союзников.
+  </p>
+  <p>
+    Её правление закончилось трагедией: предательство, гражданская война и Камланнская битва, где она погибла от рук собственного сына Мордреда. Желая исправить ошибки прошлого, Артурия заключила контракт с Миром и стала Героическим Духом, чтобы в Войне Грааля переписать историю и отказаться от трона в пользу более достойного правителя.
+  </p>
+</section>
+
+<section>
+  <h2>Внешность</h2>
+  <p>
+    Артурия — молодая женщина с идеальными чертами: бледная кожа, ярко-зелёные глаза, светлые (золотисто-русые) волосы, собранные в аккуратный пучок с характерным ахоге (торчащим локоном). Несмотря на возраст 24 года (физически выглядит ~15–17 из-за магии), она обладает королевской грацией и атлетическим телосложением рыцаря.
+  </p>
+  <p>
+    В обычном виде носит синий доспех с плащом и платьем, скрывающим формы. Её легендарный меч — **Экскалибур** (Excalibur) — невидим благодаря заклинанию ветра, пока не высвобождается в ослепительном луче света.
+  </p>
+</section>
+
+<section>
+  <h2>Личность</h2>
+  <p>
+    Сэйбер — воплощение рыцарской чести, долга и самопожертвования. Она холодна, сдержанна и немногословна на первый взгляд, но это маска: внутри она глубоко подавляет эмоции, чтобы оставаться идеальным королём. Артурия винит себя за падение Британии и считает своё правление ошибкой — слишком строгим, слишком бесчувственным.
+  </p>
+  <p>
+    Несмотря на это, она предана мастеру, ценит справедливость, ненавидит ложь и предательство. Любит простые радости (еда, особенно японская кухня — большой фанат риса и омлета), но редко позволяет себе расслабиться. Её главная черта — непоколебимая воля и готовность умереть за идеалы.
+  </p>
+</section>
+    </div>
+  </div>
+</div>
+
+<script>
+// Тот же скрипт меню
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+    toggleMenu();
+  }
+});
+</script>
+
+</body>
+</html>

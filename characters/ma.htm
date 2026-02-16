@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Микаса Аккерман | Биография</title>
+  <link rel="icon" href="teto.png">
+  <link rel="stylesheet" href="../style.css">  <!-- предполагаем, что style.css в корне, а персонажи в /characters/ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../WF.mp4" type="video/mp4">  <!-- путь подкорректируй если нужно -->
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+
+<div class="overlay"></div>
+
+<!-- Кнопка "обратно" в неоновом стиле -->
+<a href="../index.html" class="back-button neon-btn">← Назад</a>
+
+<!-- Основной блок биографии -->
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Микаса Акерман</h1>
+      <div class="bio-subtitle">Атака титанов</div>
+    </div>
+
+    <div class="bio-content">
+      <section>
+  <h2>Биография</h2>
+  <p>
+    Микаса Акерман — одна из главных героинь <strong>«Атаки титанов»</strong>, приёмная сестра Эрена Йегера и лучшая подруга Армина Арлерта. Она считается сильнейшим солдатом 104-го кадетского корпуса и одним из самых выдающихся бойцов Разведкорпуса.
+  </p>
+  <p>
+    Микаса родилась от отца — представителя клана Аккерман — и матери азиатского происхождения (из клана Азумабито, потомков бывших сёгунов Хизуру). До трагедии она жила мирной жизнью в сельской местности за стеной Мария. В детстве её родителей убили бандиты-торговцы людьми, пытавшиеся похитить девочку из-за её редкой азиатской внешности. Эрен Йегер спас её, убив двух захватчиков, а третий был убит самой Микасой, когда её «инстинкты Аккермана» впервые пробудились.
+  </p>
+  <p>
+    После этого Эрен и его родители приютили Микасу. Она стала носить красный шарф — подарок от Карлы Йегер — как символ семьи и защиты. Когда титаны разрушили стену Мария и съели мать Эрена, Микаса поклялась защищать его любой ценой и пошла за ним в армию.
+  </p>
+</section>
+
+<section>
+  <h2>Внешность</h2>
+  <p>
+    Микаса — высокая (170 см), атлетически сложенная девушка с бледной кожей, тёмно-серыми глазами и короткими чёрными волосами (изначально были длинными, но она подстриглась по совету Эрена). У неё выразительные черты лица, часто спокойное и холодное выражение. Всегда носит красный шарф — это её самая узнаваемая деталь.
+  </p>
+</section>
+
+<section>
+  <h2>Личность</h2>
+  <p>
+    Микаса сдержанная, немногословная и крайне сосредоточенная. Её главная черта — безграничная преданность Эрену, которую многие считают одержимостью. Она готова пожертвовать всем ради его безопасности. Несмотря на холодный вид, внутри она глубоко чувствует боль, потерю и красоту мира — знаменитая фраза «Этот мир жесток... и всё же прекрасен» полностью отражает её мировоззрение.
+  </p>
+  <p>
+    Благодаря генетике Аккерманов она обладает сверхчеловеческой силой, скоростью, рефлексами и боевыми инстинктами. Микаса трудолюбива, дисциплинирована, заботлива к близким (особенно к Эрену и Армину), но редко показывает эмоции открыто. Травма детства сделала её замкнутой, но она всегда готова встать на защиту тех, кого любит.
+  </p>
+</section>
+    </div>
+  </div>
+</div>
+
+<script>
+// Тот же скрипт меню
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+    toggleMenu();
+  }
+});
+</script>
+
+</body>
+</html>

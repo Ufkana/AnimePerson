@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Томбои</title>
+  <link rel="icon" href="teto.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="WF.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="wave-container">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<!-- Гамбургер -->
+<button class="menu-toggle" aria-label="Открыть меню">
+  <span class="bar bar-top"></span>
+  <span class="bar bar-mid"></span>
+  <span class="bar bar-bot"></span>
+</button>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2>Категории</h2>
+  </div>
+  <ul class="menu-list">
+    <li><a href="tomboy.htm" class="menu-link tomboy">Томбои</a></li>
+    <li><a href="women.htm"  class="menu-link women">Женщины</a></li>
+    <li><a href="femboy.htm" class="menu-link femboy">Фембои</a></li>
+    <li><a href="men.htm"    class="menu-link men">Мужчины</a></li>
+  </ul>
+</nav>
+
+<div class="overlay"></div>
+<!-- Список персонажей (компактный) -->
+<div class="character-list">
+
+  <a href="characters/sb.htm" class="character-item" style="--accent: #88ffaa;">
+    <div class="avatar">
+      <img src="https://i.postimg.cc/656R5MNt/izobrazenie.png" alt="Сейбер" loading="lazy">
+    </div>
+    <div class="info">
+      <div class="name">Сейбер</div>
+      <div class="anime">Saber</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a href="characters/ma.htm" class="character-item" style="--accent: #FF2400;">
+    <div class="avatar">
+      <img src="https://i.postimg.cc/VNwzmH3V/izobrazenie.png" alt="Микаса Аккерман" loading="lazy">
+    </div>
+    <div class="info">
+      <div class="name">Микаса Аккерман</div>
+      <div class="anime">Mikasa Ackerman</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a href="characters/vi.html" class="character-item" style="--accent: #c026d3;">
+    <div class="avatar">
+      <img src="images/tomboy/vi.jpg" alt="Vi" loading="lazy">
+    </div>
+    <div class="info">
+      <div class="name">Vi</div>
+      <div class="anime">Arcane</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a href="characters/revy.html" class="character-item" style="--accent: #d32f2f;">
+    <div class="avatar">
+      <img src="images/tomboy/revy.jpg" alt="Revy" loading="lazy">
+    </div>
+    <div class="info">
+      <div class="name">Revy</div>
+      <div class="anime">Black Lagoon</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <!-- Добавляй новых персонажей сюда ↓ -->
+
+</div>
+
+<script>
+// меню (как было)
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) toggleMenu();
+});
+</script>
+
+</body>
+</html>
