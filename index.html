@@ -9,147 +9,153 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="WF.mp4" type="video/mp4">
-  </video>
-  <div class="wave-container">
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-</div>
+</head>
+<body>
+
 <video autoplay muted loop playsinline id="bg-video">
   <source src="WF.mp4" type="video/mp4">
 </video>
 <div class="bg-overlay"></div>
+<div class="wave-container">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
 <!-- Анимации поверх видео -->
 <div class="effects-container"></div>
-
-</head>
-<body>
 <div class="neon-flashes"></div>
-  <!-- Гамбургер-кнопка -->
-  <button class="menu-toggle" aria-label="Открыть меню">
-    <span class="bar bar-top"></span>
-    <span class="bar bar-mid"></span>
-    <span class="bar bar-bot"></span>
-  </button>
 
-  <!-- Боковое меню -->
-  <nav class="sidebar">
-    <div class="sidebar-header">
-  <h2>Вайфу</h2>
+<!-- Гамбургер-кнопка -->
+<button class="menu-toggle" aria-label="Открыть меню">
+  <span class="bar bar-top"></span>
+  <span class="bar bar-mid"></span>
+  <span class="bar bar-bot"></span>
+</button>
+
+<!-- Боковое меню с категориями -->
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2>Категории</h2>
+  </div>
+  <ul class="menu-list">
+    <li><a href="tomboy.htm" class="menu-link tomboy">Томбои</a></li>
+    <li><a href="women.htm"  class="menu-link women">Женщины</a></li>
+    <li><a href="femboy.htm" class="menu-link femboy">Фембои</a></li>
+    <li><a href="men.htm"    class="menu-link men">Мужчины</a></li>
+  </ul>
+</nav>
+
+<!-- Затемнение при открытом меню -->
+<div class="overlay"></div>
+
+<!-- Поиск -->
+<div class="search-container">
+  <div class="search-wrapper">
+    <input
+      type="text"
+      id="waifu-search"
+      placeholder="Введите имя персонажа..."
+      autocomplete="off"
+    >
+    <div class="search-icon">🔍</div>
+  </div>
+  <div class="suggestions" id="suggestions"></div>
 </div>
-    <ul class="menu-list">
-      <li><a href="k.htm" class="menu-link kaguya">Кагуя Синомия</a></li>
-      <li><a href="r.htm" class="menu-link rem">Рем</a></li>
-      <li><a href="Alice.htm" class="menu-link alice">Алиса Михаиловна</a></li>
-      <li><a href="Marine.htm" class="menu-link marin">Марин Китагава</a></li>
-      <li><a href="Kana.htm" class="menu-link kana">Арима Кана</a></li>
-    </ul>
-  </nav>
 
-  <!-- Затемнение при открытом меню -->
-  <div class="overlay"></div>
-  <div class="bg-overlay"></div>
-      <!-- Поиск -->
-      <div class="search-container">
-        <div class="search-wrapper">
-          <input 
-            type="text" 
-            id="waifu-search" 
-            placeholder="Введи имя вайфу..." 
-            autocomplete="off"
-          >
-          <div class="search-icon">🔍</div>
-        </div>
+<script>
+// Гамбургер-меню
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
 
-        <div class="suggestions" id="suggestions"></div>
-      </div>
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
 
-  </main>
+menuToggle.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
 
-  <script>
-    
-    // Гамбургер-меню
-    const menuToggle = document.querySelector('.menu-toggle');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.querySelector('.overlay');
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+    toggleMenu();
+  }
+});
 
-    function toggleMenu() {
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('open');
-      menuToggle.classList.toggle('open');
-    }
+// Поиск — теперь по категориям
+const categories = [
+  // Женщины
+  { name: "Арима Кана",   link: "k.htm",  color: "#911E42" },
+  { name: "Рем",  link: "women.htm",   color: "#80DAEB" },
+  { name: "Марин Китагава",   link: "femboy.htm",  color: "#FFCF48" },
+  { name: "Алиса Кудзе",  link: "men.htm",     color: "#FFFAFA" },
+  { name: "Кагуя Синомия",  link: "tomboy.htm",  color: "#FF2400" },
+  // Томбои
+  { name: "Сейбер",  link: "characters/sb.htm", color: "#88ffaa" },
+  { name: "Микаса Акерман",  link: "characters/ma.htm",  color: "#88ffaa" },
+  // Фембои
+  { name: "Vi",  link: "characters/vi.html", color: "#c026d3" },
+  { name: "Реви", link: "characters/revy.html", color: "#d32f2f" },
+  // Мужчины
+  { name: "Леон Кеннеди", link: "characters/leon-kennedy.html", color: "#2E8B57" },
+  
+];
 
-    menuToggle.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
+const searchInput = document.getElementById('waifu-search');
+const suggestionsBox = document.getElementById('suggestions');
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-        toggleMenu();
-      }
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+  suggestionsBox.innerHTML = '';
+
+  if (query.length < 1) {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  const matches = categories.filter(cat =>
+    cat.name.toLowerCase().includes(query)
+  );
+
+  if (matches.length === 0) {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  matches.forEach(cat => {
+    const item = document.createElement('div');
+    item.classList.add('suggestion-item');
+    item.innerHTML = `<span style="color: ${cat.color}">${cat.name}</span>`;
+    item.addEventListener('click', () => {
+      window.location.href = cat.link;
     });
+    suggestionsBox.appendChild(item);
+  });
 
-    // Поиск
-    const waifus = [
-      { name: "Кагуя Синомия", link: "k.htm", color: "#ff99cc" },
-      { name: "Рем",                 link: "r.htm", color: "#88eeff" },
-      { name: "Алиса Михаиловна",    link: "Alice.htm", color: "#f0f0ff" },
-      { name: "Марин Китагава",      link: "Marine.htm", color: "#ffdd99" },
-      { name: "Арима Кана",          link: "Kana.htm", color: "#ff99dd" }
-    ];
+  suggestionsBox.style.display = 'block';
+});
 
-    const searchInput = document.getElementById('waifu-search');
-    const suggestionsBox = document.getElementById('suggestions');
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+    suggestionsBox.style.display = 'none';
+  }
+});
 
-    searchInput.addEventListener('input', function() {
-      const query = this.value.toLowerCase().trim();
-      suggestionsBox.innerHTML = '';
-
-      if (query.length < 1) {
-        suggestionsBox.style.display = 'none';
-        return;
-      }
-
-      const matches = waifus.filter(waifu => 
-        waifu.name.toLowerCase().includes(query)
-      );
-
-      if (matches.length === 0) {
-        suggestionsBox.style.display = 'none';
-        return;
-      }
-
-      matches.forEach(waifu => {
-        const item = document.createElement('div');
-        item.classList.add('suggestion-item');
-        item.innerHTML = `<span style="color: ${waifu.color}">${waifu.name}</span>`;
-        item.addEventListener('click', () => {
-          window.location.href = waifu.link;
-        });
-        suggestionsBox.appendChild(item);
-      });
-
-      suggestionsBox.style.display = 'block';
-    });
-
-    document.addEventListener('click', function(e) {
-      if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-        suggestionsBox.style.display = 'none';
-      }
-    });
-
-    searchInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        const first = suggestionsBox.querySelector('.suggestion-item');
-        if (first) first.click();
-      }
-    });
-  </script>
-  <div class="particles"></div>
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const first = suggestionsBox.querySelector('.suggestion-item');
+    if (first) first.click();
+  }
+});
+</script>
 </body>
 </html>
+
+
+
+
 
 
 
