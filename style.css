@@ -18,7 +18,7 @@ body, html {
 .bg-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 5, 35, 0.4); /* лёгкое затемнение видео */
+  background: rgba(10, 5, 35, 0.4);
   z-index: -1;
   pointer-events: none;
 }
@@ -83,7 +83,7 @@ body, html {
 
 
 /* Лёгкие искры (sparkle) при открытии */
-/*.menu-toggle.open::before,
+.menu-toggle.open::before,
 .menu-toggle.open::after {
   content: '';
   position: absolute;
@@ -102,57 +102,12 @@ body, html {
 
 .menu-toggle.open::after {
   animation-delay: 0.15s;
-}*/
+}
 
 @keyframes sparkle {
   0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
   40%  { transform: translate(-50%, -50%) scale(1.8); opacity: 0.9; }
   100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-}
-
-.wave-container {
-  position: fixed;
-  inset: 0; /* занимает весь экран */
-  pointer-events: none; /* не мешает кликам */
-  z-index: 0; /* ниже всего контента, выше видео */
-  overflow: hidden;
-}
-
-.wave {
-  position: absolute;
-  bottom: -50px; /* стартовая позиция волны снизу */
-  width: 200%;
-  height: 120px;
-  background: rgba(255,255,255,0.08); /* прозрачная белая волна */
-  border-radius: 100%;
-  animation: waveAnim 6s ease-in-out infinite;
-  opacity: 0;
-}
-
-/* Для каждой волны разные задержки и масштаб */
-.wave:nth-child(1) { animation-delay: 0s; }
-.wave:nth-child(2) { animation-delay: 2s; height: 100px; background: rgba(255,255,255,0.06);}
-.wave:nth-child(3) { animation-delay: 4s; height: 140px; background: rgba(255,255,255,0.04);}
-
-@keyframes waveAnim {
-  0% {
-    transform: translateX(-50%) scaleX(0.8) translateY(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateX(50%) scaleX(1) translateY(-30px);
-    opacity: 0.5;
-  }
-  90% {
-    opacity: 0.2;
-  }
-  100% {
-    transform: translateX(100%) scaleX(0.8) translateY(0);
-    opacity: 0;
-  }
 }
 
 /* ─── Боковое меню ─── */
@@ -253,28 +208,11 @@ body, html {
   color: white;
   border-left-color: #a78bfa;
   padding-left: 2.6rem;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.6);
+  text-shadow: 0 0 10px rgba(27, 27, 27, 0.6);
 }
-
-/* Цвета персонажей + градиент при наведении */
-.menu-link.kaguya { color: #ff99cc; }
-.menu-link.kaguya:hover { background: linear-gradient(to right, #ff3366, #ff99cc22); border-left-color: #ff3366; }
-
-.menu-link.rem    { color: #88eeff; }
-.menu-link.rem:hover    { background: linear-gradient(to right, #00ccff, #88eeff22); border-left-color: #00ccff; }
-
-.menu-link.alice  { color: #f0f0ff; }
-.menu-link.alice:hover  { background: linear-gradient(to right, #c0c0ff, #f0f0ff22); border-left-color: #c0c0ff; }
-
-.menu-link.marin  { color: #ffdd99; }
-.menu-link.marin:hover  { background: linear-gradient(to right, #ffaa00, #ffdd9922); border-left-color: #ffaa00; }
-
-.menu-link.kana   { color: #ff99dd; }
-.menu-link.kana:hover   { background: linear-gradient(to right, #ff00aa, #ff99dd22); border-left-color: #ff00aa; }
-
 /* Сдвиг кнопки вправо при открытии */
 .menu-toggle.open {
-  transform: translateX(200px);
+  transform: translateX(253px);
 }
 .neon-flashes {
   position: fixed;
@@ -413,3 +351,327 @@ body, html {
   opacity: 0.8;
   text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+/* ─── ДОБАВКИ ДЛЯ ТЕЛЕФОНА ─── */
+@media (max-width: 768px) {
+  .menu-toggle {
+    top: 12px;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+    gap: 8px;
+  }
+  .bar {
+    height: 3.5px;
+  }
+  .menu-toggle.open {
+    transform: translateX(260px);   /* чуть меньше сдвиг, чтобы не вылезал */
+  }
+  .sidebar {
+    width: 280px;
+  }
+  .search-container {
+    max-width: 92%;
+    margin: 9rem auto 0;
+  }
+  #waifu-search {
+    font-size: 1.3rem;
+    padding: 1.2rem 1.4rem 1.2rem 4.2rem;
+  }
+  .search-icon {
+    font-size: 1.6rem;
+    left: 1.4rem;
+  }
+  .sidebar-header h2 {
+    font-size: 2.4rem;
+  }
+  .menu-link {
+    font-size: 1.35rem;
+    padding: 1.2rem 1.8rem;
+  }
+}
+
+/* Цвета категорий */
+.menu-link.tomboy  { color: #88ffaa; }
+.menu-link.tomboy:hover  { background: linear-gradient(to right, #44ff8941, #88ffaa22); border-left-color: #2fff7b95; }
+
+.menu-link.women   { color: #ff99cc; }
+.menu-link.women:hover   { background: linear-gradient(to right, #ff33665a, #ff99cc22); border-left-color: #d4114273; }
+
+.menu-link.femboy  { color: #ff88ff; }
+.menu-link.femboy:hover  { background: linear-gradient(to right, #cc66ff48, #ff88ff22); border-left-color: #cc66ff8e; }
+
+.menu-link.men     { color: #aaffff; }
+.menu-link.men:hover     { background: linear-gradient(to right, #66ffff4f, #aaffff22); border-left-color: #66ffffa0; }
+
+
+/* Цвета персонажей + градиент при наведении */
+.menu-link.kaguya { color: #ff99cc; }
+.menu-link.kaguya:hover { background: linear-gradient(to right, #ff3366, #ff99cc22); border-left-color: #ff3366; }
+
+.menu-link.rem    { color: #88eeff; }
+.menu-link.rem:hover    { background: linear-gradient(to right, #00ccff, #88eeff22); border-left-color: #00ccff; }
+
+.menu-link.alice  { color: #f0f0ff; }
+.menu-link.alice:hover  { background: linear-gradient(to right, #c0c0ff, #f0f0ff22); border-left-color: #c0c0ff; }
+
+.menu-link.marin  { color: #ffdd99; }
+.menu-link.marin:hover  { background: linear-gradient(to right, #ffaa00, #ffdd9922); border-left-color: #ffaa00; }
+
+.menu-link.kana   { color: #ff99dd; }
+.menu-link.kana:hover   { background: linear-gradient(to right, #ff00aa, #ff99dd22); border-left-color: #ff00aa; }
+
+/* ─── Компактный список персонажей ─── */
+
+.character-list {
+  max-width: 720px;
+  margin: 2rem auto 5rem;
+  padding: 0 1rem;
+}
+
+.character-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem 1.4rem;
+  margin-bottom: 0.9rem;
+  background: rgba(25, 20, 70, 0.6);
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #e0e0ff;
+  transition: all 0.28s ease;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.character-item:hover {
+  background: rgba(40, 30, 90, 0.8);
+  border-color: var(--accent, #a78bfa);
+  transform: translateX(8px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.character-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--accent, #a78bfa);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.character-item:hover::before {
+  opacity: 1;
+}
+
+.avatar {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--accent, #a78bfa55);
+  box-shadow: 0 0 16px var(--accent, #a78bfa33);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.character-item:hover .avatar img {
+  transform: scale(1.12);
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #f0f0ff;
+  text-shadow: 0 0 10px rgba(167,139,250,0.4);
+}
+
+.anime {
+  font-size: 1rem;
+  color: #b0b0ff;
+  opacity: 0.85;
+}
+
+.arrow {
+  font-size: 1.6rem;
+  color: var(--accent, #a78bfa);
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.character-item:hover .arrow {
+  opacity: 1;
+  transform: translateX(6px);
+}
+
+/* Мобильный вид (ещё компактнее) */
+@media (max-width: 480px) {
+  .avatar {
+    width: 58px;
+    height: 58px;
+  }
+  .name {
+    font-size: 1.2rem;
+  }
+  .anime {
+    font-size: 0.95rem;
+  }
+}
+/* ─── Страницы биографии персонажей ─── */
+
+.back-button.neon-btn {
+  position: fixed;
+  top: 20px;
+  left: 80px;           /* сдвигаем правее гамбургера */
+  z-index: 1002;
+  padding: 12px 28px;
+  background: rgba(20, 15, 60, 0.7);
+  border: 2px solid #a78bfa;
+  border-radius: 50px;
+  color: #e0e0ff;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-shadow: 0 0 12px #a78bfa;
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
+}
+
+.back-button.neon-btn:hover {
+  background: rgba(40, 30, 90, 0.9);
+  border-color: #ff6ec7;
+  box-shadow: 0 0 40px rgba(255, 110, 199, 0.6);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .back-button.neon-btn {
+    top: 70px;
+    left: 20px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+}
+
+/* Био-контейнер */
+.bio-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 20px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bio-card {
+  width: 100%;
+  max-width: 880px;
+  background: rgba(15, 10, 50, 0.78);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 15px 60px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+.bio-header {
+  padding: 2.5rem 2.5rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+  background: linear-gradient(to bottom, rgba(167,139,250,0.12), transparent);
+}
+
+.bio-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 3.2rem;
+  background: linear-gradient(90deg, #ff6ec7, #a78bfa, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0 0 0.6rem;
+  text-shadow: 0 0 30px rgba(167,139,250,0.7);
+}
+
+.bio-subtitle {
+  font-size: 1.4rem;
+  color: #b0b0ff;
+  opacity: 0.9;
+}
+
+.bio-content {
+  padding: 2.2rem;
+  color: #e0e0ff;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.bio-content h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.1rem;
+  color: #a78bfa;
+  margin: 2.2rem 0 1rem;
+  text-shadow: 0 0 15px rgba(167,139,250,0.5);
+  position: relative;
+}
+
+.bio-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #a78bfa, #ff6ec7);
+  border-radius: 3px;
+}
+
+.bio-content p {
+  margin: 0 0 1.4rem;
+  color: #d0d0ff;
+}
+
+.bio-content strong {
+  color: #ff6ec7;
+  text-shadow: 0 0 10px rgba(255,110,199,0.4);
+}
+
+/* Скроллбар красивее */
+.bio-card::-webkit-scrollbar {
+  width: 10px;
+}
+.bio-card::-webkit-scrollbar-track {
+  background: rgba(10,5,35,0.6);
+}
+.bio-card::-webkit-scrollbar-thumb {
+  background: #a78bfa;
+  border-radius: 5px;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
+}
+.bio-card::-webkit-scrollbar-thumb:hover {
+  background: #ff6ec7;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .bio-container { padding-top: 100px; }
+  .bio-title { font-size: 2.6rem; }
+  .bio-content { padding: 1.6rem; font-size: 1.05rem; }
+  .bio-content h2 { font-size: 1.9rem; }
+}
+
