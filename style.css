@@ -89,9 +89,9 @@ body, html {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #fff;
+  background: #c221df5c;
   border-radius: 50%;
-  top: 50%;
+  top: 125%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
@@ -394,6 +394,9 @@ body, html {
 .menu-link.tomboy  { color: #88ffaa; }
 .menu-link.tomboy:hover  { background: linear-gradient(to right, #44ff8941, #88ffaa22); border-left-color: #2fff7b95; }
 
+.menu-link.glav  { color: #00ffcc; }
+.menu-link.glav:hover  { background: linear-gradient(to right, #44ff8941, #88ffaa22); border-left-color: #00ffff95; }
+
 .menu-link.women   { color: #ff99cc; }
 .menu-link.women:hover   { background: linear-gradient(to right, #ff33665a, #ff99cc22); border-left-color: #d4114273; }
 
@@ -403,22 +406,6 @@ body, html {
 .menu-link.men     { color: #aaffff; }
 .menu-link.men:hover     { background: linear-gradient(to right, #66ffff4f, #aaffff22); border-left-color: #66ffffa0; }
 
-
-/* Цвета персонажей + градиент при наведении */
-.menu-link.kaguya { color: #ff99cc; }
-.menu-link.kaguya:hover { background: linear-gradient(to right, #ff3366, #ff99cc22); border-left-color: #ff3366; }
-
-.menu-link.rem    { color: #88eeff; }
-.menu-link.rem:hover    { background: linear-gradient(to right, #00ccff, #88eeff22); border-left-color: #00ccff; }
-
-.menu-link.alice  { color: #f0f0ff; }
-.menu-link.alice:hover  { background: linear-gradient(to right, #c0c0ff, #f0f0ff22); border-left-color: #c0c0ff; }
-
-.menu-link.marin  { color: #ffdd99; }
-.menu-link.marin:hover  { background: linear-gradient(to right, #ffaa00, #ffdd9922); border-left-color: #ffaa00; }
-
-.menu-link.kana   { color: #ff99dd; }
-.menu-link.kana:hover   { background: linear-gradient(to right, #ff00aa, #ff99dd22); border-left-color: #ff00aa; }
 
 /* ─── Компактный список персонажей ─── */
 
@@ -582,8 +569,8 @@ body, html {
 .bio-card {
   width: 100%;
   max-width: 880px;
-  background: rgba(15, 10, 50, 0.78);
-  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: rgba(15, 10, 50, 0.356);
+  border: 1px solid rgba(167, 139, 250, 0.192);
   border-radius: 20px;
   backdrop-filter: blur(16px);
   box-shadow: 0 15px 60px rgba(0,0,0,0.6);
@@ -674,4 +661,5 @@ body, html {
   .bio-content { padding: 1.6rem; font-size: 1.05rem; }
   .bio-content h2 { font-size: 1.9rem; }
 }
+
 
