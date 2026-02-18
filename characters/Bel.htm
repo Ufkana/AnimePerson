@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Аура Белла Фиора | Биография</title>
+  <link rel="icon" href="aura.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/Bel.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../tomboy.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Аура Белла Фиора</h1>
+      <div class="bio-subtitle">Overlord</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Аура Белла Фиора — одна из Стражей Великой Гробницы Назарик и хранительница 
+          шестого этажа. Она создана Перорончино — одним из высших существ гильдии Айнз Оал Гоун.
+        </p>
+        <p>
+          Несмотря на внешность юной девочки, Аура — тёмная эльфийка с огромным боевым потенциалом. 
+          Она специализируется на укрощении магических зверей и управлении монстрами.
+        </p>
+        <p>
+          Вместе со своим братом-близнецом Маре она служит Айнзу Оал Гоуну 
+          с абсолютной преданностью и готова выполнить любой приказ без колебаний.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Аура выглядит как девочка-подросток с тёмной кожей и длинными светлыми волосами, 
+          собранными в хвост. У неё яркие золотистые глаза и острые эльфийские уши.
+        </p>
+        <p>
+          Обычно она носит лёгкую кожаную экипировку зелёных оттенков, 
+          подчёркивающую её роль рейнджера и укротителя зверей. 
+          Её внешний вид сочетает миловидность и опасность.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          В отличие от своего застенчивого брата Маре, Аура уверенная, энергичная и открытая. 
+          Она прямолинейна, любит поддразнивать окружающих и обладает лидерскими качествами.
+        </p>
+        <p>
+          Несмотря на детскую внешность, Аура крайне хладнокровна в бою 
+          и безжалостна к врагам Назарика. Её верность Айнзу абсолютна, 
+          и она искренне восхищается им.
+        </p>
+        <p>
+          Под её жизнерадостной натурой скрывается стратегический ум 
+          и способность быстро оценивать ситуацию.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ю Касима | Биография</title>
+  <link rel="icon" href="https://i.postimg.cc/VsWsmXhh/izobrazenie.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/Yu.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../tomboy.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Ю Касима</h1>
+      <div class="bio-subtitle">Monthly Girls' Nozaki-kun</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Ю Касима — ученица старшей школы Роман Академии и участница театрального клуба. 
+          Она известна своей популярностью среди девушек и прозвищем «Школьный принц».
+        </p>
+        <p>
+          Благодаря своей харизме и внешности Касима легко покоряет сердца окружающих, 
+          особенно представительниц женского пола. Однако за её образом идеального принца 
+          скрывается довольно легкомысленная и невнимательная натура.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Касима — высокая и стройная девушка с короткими светло-каштановыми волосами 
+          и выразительными голубыми глазами. Её андрогинная внешность делает её 
+          особенно привлекательной в мужских театральных ролях.
+        </p>
+        <p>
+          В школьной форме она выглядит элегантно и уверенно, 
+          а на сцене её образ становится ещё более харизматичным и эффектным.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Касима энергичная, дружелюбная и немного беззаботная. 
+          Она часто флиртует с девушками в шуточной форме, 
+          не всегда осознавая последствия.
+        </p>
+        <p>
+          Несмотря на легкомысленность, она искренне предана друзьям 
+          и уважает президента театрального клуба Хори, 
+          который часто ставит её на место.
+        </p>
+        <p>
+          За образом «принца» скрывается обычная школьница, 
+          способная смущаться и переживать.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

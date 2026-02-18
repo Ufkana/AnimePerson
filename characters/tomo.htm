@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Томо Айдзава | Биография</title>
+  <link rel="icon" href="tomo.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/tomo.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../tomboy.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Томо Айдзава</h1>
+      <div class="bio-subtitle">Tomo-chan Is a Girl!</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Томо Айдзава — главная героиня романтической комедии «Tomo-chan Is a Girl!». 
+          Она энергичная и спортивная старшеклассница, которая с детства дружит с Дзюнъитиро Куботой.
+        </p>
+        <p>
+          С ранних лет Томо росла в додзё своего отца и постоянно тренировалась в карате. 
+          Из-за этого она стала невероятно сильной физически и привыкла общаться как «свой парень». 
+          Однако внутри она остаётся обычной девушкой, которая влюблена в своего лучшего друга.
+        </p>
+        <p>
+          Главная проблема Томо — Дзюн воспринимает её исключительно как друга и спарринг-партнёра. 
+          Вся история строится вокруг её попыток доказать, что она не просто «бро», а девушка.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Томо — высокая и спортивная девушка с подтянутым телосложением. 
+          У неё короткие ярко-красные волосы, обычно собранные в небольшой хвостик, 
+          и янтарные глаза. Её осанка и манера поведения часто заставляют окружающих 
+          воспринимать её как парня.
+        </p>
+        <p>
+          В школе она носит стандартную форму с юбкой и пиджаком. 
+          Несмотря на женственную одежду, её энергичность и уверенная походка 
+          придают ей более боевой образ.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Томо искренняя, импульсивная и невероятно прямолинейная. 
+          Она плохо умеет скрывать эмоции и всегда говорит то, что думает.
+        </p>
+        <p>
+          Несмотря на внешнюю грубоватость, она очень романтичная и легко смущается, 
+          когда речь заходит о её женственности. Комплименты и намёки на свидания 
+          заставляют её теряться.
+        </p>
+        <p>
+          Она предана друзьям, особенно Дзюну, и готова защищать близких любой ценой. 
+          За сильным характером скрывается ранимая девушка, мечтающая быть любимой.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>
