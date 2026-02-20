@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Алиса Кудзэ | Биография</title>
+  <link rel="icon" href="alya.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/alya.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../index.html" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Алиса Кудзэ</h1>
+      <div class="bio-subtitle">Tokidoki Bosotto Russia-go de Dereru Tonari no Alya-san</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Алиса Михайловна Кудзэ, также известная как Аля, — отличница и одна из самых популярных учениц школы. 
+          Она имеет русско-японское происхождение и свободно владеет русским языком.
+        </p>
+        <p>
+          В школе она сидит рядом с Масачикой Кудзэ и часто поддразнивает его. 
+          Иногда Аля шепчет по-русски романтические или неловкие фразы, 
+          думая, что он их не понимает.
+        </p>
+        <p>
+          Однако на самом деле Масачика знает русский язык, 
+          что создаёт множество комичных и романтических ситуаций.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Аля — стройная девушка с длинными серебристо-светлыми волосами 
+          и голубыми глазами. Её внешность подчёркивает европейские черты.
+        </p>
+        <p>
+          В школьной форме она выглядит элегантно и строго, 
+          а её спокойная осанка создаёт образ «ледяной красавицы».
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          На первый взгляд Аля холодная и серьёзная, 
+          но на самом деле она заботливая и легко смущается.
+        </p>
+        <p>
+          Она умна, ответственна и обладает сильным чувством гордости. 
+          Однако рядом с Масачикой её строгий образ постепенно тает.
+        </p>
+        <p>
+          Её привычка говорить нежные слова по-русски выдаёт её настоящие чувства, 
+          даже если она старается скрывать их.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

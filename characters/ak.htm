@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Арима Кана | Биография</title>
+  <link rel="icon" href="cp/kana.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/ka.mp4" type="video/mp4">  <!-- путь подкорректируй если нужно -->
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../index.html" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Арима Кана</h1>
+      <div class="bio-subtitle">Oshi no Ko</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Арима Кана — бывшая звезда-ребёнок и талантливая актриса, известная 
+          как «гений, который может заплакать за 10 секунд». 
+          В детстве она была чрезвычайно популярна в индустрии развлечений.
+        </p>
+        <p>
+          Со временем её слава угасла, и Кана столкнулась с жестокой реальностью шоу-бизнеса. 
+          Несмотря на это, она продолжила бороться за своё место на сцене.
+        </p>
+        <p>
+          Позже она становится участницей айдол-группы B-Komachi, 
+          где вновь пытается раскрыть свой потенциал и вернуть признание.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Кана — миниатюрная девушка с короткими рыжевато-каштановыми волосами 
+          и яркими розоватыми глазами. Её внешность сочетает миловидность 
+          и выразительную актёрскую харизму.
+        </p>
+        <p>
+          В повседневной жизни она носит школьную форму, 
+          а на сцене преображается в яркий айдол-образ.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Кана умная, прямолинейная и временами язвительная. 
+          Она болезненно переживает свою потерю популярности 
+          и боится быть забытой.
+        </p>
+        <p>
+          Несмотря на колкий характер, Кана ранима и искренне старается 
+          доказать свою ценность как актрисы и айдола.
+        </p>
+        <p>
+          Она трудолюбива, талантлива и стремится к признанию, 
+          даже если иногда её гордость мешает открыто выражать чувства.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

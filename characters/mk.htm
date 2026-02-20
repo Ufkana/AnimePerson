@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Марин Китагава | Биография</title>
+  <link rel="icon" href="marin.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/mk.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../index.html" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Марин Китагава</h1>
+      <div class="bio-subtitle">My Dress-Up Darling</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Марин Китагава — яркая и популярная старшеклассница, увлекающаяся аниме, играми и косплеем. 
+          Несмотря на внешность типичной гяру, она является настоящей отаку и обожает перевоплощаться в любимых персонажей.
+        </p>
+        <p>
+          Познакомившись с Ваканой Годжо, который умеет шить традиционные куклы хина, 
+          Марин просит его помочь ей создать костюм для косплея. 
+          С этого момента начинается их совместный путь в мире творчества и романтики.
+        </p>
+        <p>
+          Постепенно её дружба с Годжо перерастает в глубокие чувства, 
+          хотя сама Марин сначала не до конца понимает их природу.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Марин — высокая и стройная девушка со светлой кожей. 
+          У неё длинные светлые волосы с розовыми кончиками и большие выразительные глаза. 
+          Она любит яркий макияж и модные аксессуары.
+        </p>
+        <p>
+          В школе носит стандартную форму, но дополняет её украшениями и собственным стилем. 
+          Во время косплея полностью преображается, демонстрируя внимание к деталям и любовь к персонажу.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Марин открытая, весёлая и искренняя. Она не боится своих увлечений и 
+          не осуждает чужие интересы. Её отличает доброта и поддержка близких людей.
+        </p>
+        <p>
+          Несмотря на лёгкий характер, Марин серьёзно относится к своим чувствам и 
+          всегда старается быть честной с собой. Она легко смущается, когда дело касается любви.
+        </p>
+        <p>
+          Её энергия, харизма и искренность делают её по-настоящему притягательной личностью.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>
