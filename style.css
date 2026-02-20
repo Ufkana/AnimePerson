@@ -1,3 +1,5 @@
+
+
 body, html {
   margin: 0;
   padding: 0;
@@ -655,7 +657,6 @@ body, html {
 }
 
 /* Мобильная адаптация */
-/* Мобильная адаптация */
 /* ─── УЛЬТРА-МОБИЛЬНАЯ ВЕРСИЯ ─── */
 @media (max-width: 768px) {
 
@@ -803,31 +804,3 @@ body, html {
   }
 
 }
-/* ─── ПК: видео работает ─── */
-#bg-video {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
-}
-
-/* ─── Телефон: вместо видео картинка ─── */
-@media (max-width: 768px) {
-
-  #bg-video {
-    display: none;
-  }
-
-  body {
-    background:
-      linear-gradient(rgba(10,5,35,0.65), rgba(10,5,35,0.65)),
-      url("https://i.postimg.cc/3wzKWwKx/izobrazenie.png") center / cover no-repeat fixed;
-  }
-
-}
-
-
-
-
