@@ -655,11 +655,154 @@ body, html {
 }
 
 /* Мобильная адаптация */
+/* Мобильная адаптация */
+/* ─── УЛЬТРА-МОБИЛЬНАЯ ВЕРСИЯ ─── */
 @media (max-width: 768px) {
-  .bio-container { padding-top: 100px; }
-  .bio-title { font-size: 2.6rem; }
-  .bio-content { padding: 1.6rem; font-size: 1.05rem; }
-  .bio-content h2 { font-size: 1.9rem; }
+
+  /* Уменьшаем общий масштаб */
+  html {
+    font-size: 14px;
+  }
+
+  /* Гамбургер */
+  .menu-toggle {
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-toggle.open {
+    transform: translateX(230px);
+  }
+
+  /* Сайдбар компактнее */
+  .sidebar {
+    width: 250px;
+  }
+
+  .sidebar-header h2 {
+    font-size: 1.9rem;
+  }
+
+  .menu-link {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.4rem;
+  }
+
+  /* Поиск */
+  .search-container {
+    margin: 6rem auto 0;
+  }
+
+  #waifu-search {
+    font-size: 1.1rem;
+    padding: 1rem 1rem 1rem 3.5rem;
+  }
+
+  .search-icon {
+    font-size: 1.4rem;
+    left: 1.2rem;
+  }
+
+  /* Список персонажей */
+  .character-list {
+    margin: 1.2rem auto 3rem;
+  }
+
+  .character-item {
+    padding: 0.8rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .name {
+    font-size: 1.05rem;
+  }
+
+  .anime {
+    font-size: 0.85rem;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+  }
+
+  /* Био страница */
+  .bio-container {
+    padding: 90px 12px 40px;
+  }
+
+  .bio-card {
+    border-radius: 16px;
+  }
+
+  .bio-header {
+    padding: 1.6rem 1rem 1rem;
+  }
+
+  .bio-title {
+    font-size: 2rem;
+  }
+
+  .bio-subtitle {
+    font-size: 1rem;
+  }
+
+  .bio-content {
+    padding: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .bio-content h2 {
+    font-size: 1.4rem;
+    margin: 1.5rem 0 0.7rem;
+  }
+
+  /* Кнопка назад */
+  .back-button.neon-btn {
+    top: 60px;
+    left: 15px;
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
 }
+
+
+/* ─── ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ ─── */
+@media (max-width: 420px) {
+
+  html {
+    font-size: 13px;
+  }
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .menu-toggle.open {
+    transform: translateX(200px);
+  }
+
+  .bio-title {
+    font-size: 1.6rem;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+  }
+
+  .character-item:hover {
+    transform: none; /* убираем сдвиг на маленьких экранах */
+  }
+
+}
+
 
 
