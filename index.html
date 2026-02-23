@@ -21,18 +21,15 @@
   <div class="wave"></div>
   <div class="wave"></div>
 </div>
-<!-- Анимации поверх видео -->
-<div class="effects-container"></div>
-<div class="neon-flashes"></div>
 
-<!-- Гамбургер-кнопка -->
+<!-- категории-кнопка -->
 <button class="menu-toggle" aria-label="Открыть меню">
   <span class="bar bar-top"></span>
   <span class="bar bar-mid"></span>
   <span class="bar bar-bot"></span>
 </button>
 
-<!-- Боковое меню с категориями -->
+<!-- категорияии -->
 <nav class="sidebar">
   <div class="sidebar-header">
     <h2>Категории</h2>
@@ -61,9 +58,8 @@
   </div>
   <div class="suggestions" id="suggestions"></div>
 </div>
-
 <script>
-// Гамбургер-меню
+  // меню 
 const menuToggle = document.querySelector('.menu-toggle');
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
@@ -78,36 +74,34 @@ menuToggle.addEventListener('click', toggleMenu);
 overlay.addEventListener('click', toggleMenu);
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-    toggleMenu();
-  }
+  if (e.key === 'Escape' && sidebar.classList.contains('open')) toggleMenu();
 });
-
-// Поиск — теперь по категориям
+// Поиск — категории
 const categories = [
-  // Женщины
-  { name: "Арима Кана",   link: "characters/ak.htm",  color: "#911E42" },
-  { name: "Рем",  link: "characters/rem.htm",   color: "#80DAEB" },
-  { name: "Марин Китагава",   link: "characters/mk.htm",  color: "#FFCF48" },
-  { name: "Алиса Кудзе",  link: "characters/am.htm",     color: "#FFFAFA" },
-  { name: "Кагуя Синомия",  link: "characters/ks.htm",  color: "#FF2400" },
-  // Томбои
-  { name: "Сэйбер",  link: "characters/sb.htm", color: "#FFB841" },
-  { name: "Микаса Акерман",  link: "characters/ma.htm",  color: "#88ffaa" },
-  { name: "Томо Айдзава",  link: "characters/tomo.htm",  color: "#ff69b4" },
-  { name: "Аура Белла Фиора",  link: "characters/Bel.htm",  color: "#d32f2f" },
-  { name: "Ю Касима",  link: "characters/Yu.htm",  color: "#00f7ff" },
-  // Фембои
-  { name: "Vi",  link: "characters/vi.html", color: "#c026d3" },
+  { name: "Арима Кана", link: "characters/ak.htm", color: "#911E42" },
+  { name: "Рем", link: "characters/rem.htm", color: "#80DAEB" },
+  { name: "Марин Китагава", link: "characters/mk.htm", color: "#FFCF48" },
+  { name: "Алиса Кудзе", link: "characters/am.htm", color: "#FFFAFA" },
+  { name: "Мегумин", link: "characters/mg.htm", color: "#ae1d1d" },
+  { name: "Кагуя Синомия", link: "characters/kg.htm", color: "#FF2400" },
+  { name: "Аканэ Курокавэ", link: "characters/ka.htm", color: "#4b3dc8" },
+
+  { name: "Артурия Пендрагон", link: "characters/sb.htm", color: "#FFB841" },
+  { name: "Микаса Акерман", link: "characters/ma.htm", color: "#88ffaa" },
+  { name: "Томо Айдзава", link: "characters/tomo.htm", color: "#ff69b4" },
+  { name: "Аура Белла Фиора", link: "characters/Bel.htm", color: "#d32f2f" },
+  { name: "Ю Касима", link: "characters/Yu.htm", color: "#00f7ff" },
+
+  { name: "Феликс Аргайл", link: "characters/felix.html", color: "#c026d3" },
   { name: "Реви", link: "characters/revy.html", color: "#d32f2f" },
-  // Мужчины
+
   { name: "Леон Кеннеди", link: "characters/leon-kennedy.html", color: "#2E8B57" },
-  
 ];
 
 const searchInput = document.getElementById('waifu-search');
 const suggestionsBox = document.getElementById('suggestions');
 
+// Ввод текста
 searchInput.addEventListener('input', function() {
   const query = this.value.toLowerCase().trim();
   suggestionsBox.innerHTML = '';
@@ -138,18 +132,31 @@ searchInput.addEventListener('input', function() {
 
   suggestionsBox.style.display = 'block';
 });
-
-document.addEventListener('click', function(e) {
-  if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
-    suggestionsBox.style.display = 'none';
-  }
-});
-
 searchInput.addEventListener('keydown', function(e) {
   if (e.key === 'Enter') {
     e.preventDefault();
+
+    const query = this.value.toLowerCase().trim();
+    if (query === "mirzaxarsenwww") {
+      window.location.href = "characters/).htm";
+      return;
+    }
+    if (query === "fileroman2025") {
+  window.location.href = "characters/).htm";
+  return;
+}
     const first = suggestionsBox.querySelector('.suggestion-item');
-    if (first) first.click();
+    if (first) {
+      first.click();
+    }
+  }
+});
+
+
+// Закрытие подсказок
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+    suggestionsBox.style.display = 'none';
   }
 });
 </script>
