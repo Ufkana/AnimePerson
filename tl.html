@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Wife</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== BACKGROUND ===== */
+#bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,5,35,0.4);
+  z-index: -1;
+}
+
+/* ===== MENU ===== */
+.menu-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 12px;
+  border: 2px solid #a78bfa;
+
+  background: rgba(20,15,60,0.85);
+  color: #a78bfa;
+
+  font-size: 28px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 1001;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+  color: #ff6ec7;
+  border-color: #ff6ec7;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: 18px;
+
+  width: 220px;
+  padding: 12px;
+
+  background: rgba(15,10,40,0.95);
+  border: 1px solid rgba(167,139,250,0.35);
+  border-radius: 14px;
+
+  backdrop-filter: blur(14px);
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.sidebar.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-link {
+  display: block;
+  padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #e0e0ff;
+}
+
+.menu-link:hover {
+  background: rgba(167,139,250,0.2);
+}
+
+/* ===== POST BUTTON + ===== */
+.add-post-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: 2px solid #a78bfa;
+
+  background: rgba(20,15,60,0.9);
+  color: white;
+
+  font-size: 32px;
+  cursor: pointer;
+
+  box-shadow: 0 0 25px rgba(167,139,250,0.5);
+  z-index: 1000;
+}
+
+/* form */
+.post-form {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+
+  width: 270px;
+
+  background: rgba(15,10,40,0.95);
+  border: 1px solid #a78bfa;
+  border-radius: 14px;
+
+  padding: 12px;
+
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+
+  z-index: 1000;
+}
+
+.post-form.active {
+  display: flex;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #a78bfa;
+  background: rgba(20,15,60,0.7);
+  color: white;
+  outline: none;
+}
+
+.post-form textarea {
+  min-height: 80px;
+}
+
+.post-form button {
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg,#a78bfa,#ff6ec7);
+  color: white;
+  cursor: pointer;
+}
+
+/* posts */
+#posts {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 10px;
+}
+
+.post {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 12px;
+
+  background: rgba(15,10,40,0.6);
+  border: 1px solid rgba(167,139,250,0.3);
+  color: #e0e0ff;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 2px solid #a78bfa;
+}
+
+.post-name {
+  color: #ff6ec7;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<video autoplay muted loop id="bg-video">
+  <source src="v/WF.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+
+<!-- MENU -->
+<button class="menu-toggle">+</button>
+
+<nav class="sidebar">
+  <a href="wuman.htm" class="menu-link">Женские</a>
+  <a href="men.htm" class="menu-link">Мужские</a>
+  <a href="intl.html" class="menu-link">Тир-листы</a>
+</nav>
+
+<!-- POSTS -->
+<button class="add-post-btn">+</button>
+
+<div class="post-form" id="post-form">
+  <input id="post-name" placeholder="Имя">
+  <input id="post-avatar" placeholder="Аватар URL">
+  <textarea id="post-text" placeholder="Сообщение"></textarea>
+  <button id="post-send">Отправить</button>
+</div>
+
+<div id="posts"></div>
+
+<script>
+
+// ===== MENU =====
+const menu = document.querySelector(".sidebar");
+document.querySelector(".menu-toggle").onclick = () => {
+  menu.classList.toggle("open");
+};
+
+// ===== FORM =====
+const btn = document.querySelector(".add-post-btn");
+const form = document.getElementById("post-form");
+
+btn.onclick = () => {
+  form.classList.toggle("active");
+};
+
+// ===== POSTS =====
+const nameI = document.getElementById("post-name");
+const avatarI = document.getElementById("post-avatar");
+const textI = document.getElementById("post-text");
+const send = document.getElementById("post-send");
+const box = document.getElementById("posts");
+
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+function render() {
+  box.innerHTML = "";
+
+  posts.slice().reverse().forEach(p => {
+    const div = document.createElement("div");
+    div.className = "post";
+
+    div.innerHTML = `
+      <div class="post-header">
+        <img class="post-avatar" src="${p.avatar || 'https://i.imgur.com/8Km9tLL.png'}">
+        <div class="post-name">${p.name}</div>
+      </div>
+      <div>${p.text}</div>
+    `;
+
+    box.appendChild(div);
+  });
+}
+
+render();
+
+send.onclick = () => {
+  if (!textI.value.trim()) return;
+
+  posts.push({
+    name: nameI.value || "Аноним",
+    avatar: avatarI.value || "",
+    text: textI.value
+  });
+
+  localStorage.setItem("posts", JSON.stringify(posts));
+
+  textI.value = "";
+  render();
+};
+
+</script>
+
+</body>
+</html>

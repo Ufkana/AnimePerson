@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Женский Тир-Лист — WifeHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video"><source src="v/WF.mp4" type="video/mp4"></video>
+    <div class="bg-overlay"></div>
+
+    <a href="intl.html" class="back-button neon-btn">← Назад</a>
+
+        <div class="tier-page">
+
+    <div class="tier-header">
+        <h2>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤЖЕНСКИЙ ТИР-ЛИСТ (Waifu)</h2>
+    </div>
+
+    <div class="tier-container">
+        <div class="tier-row s-tier">
+            <div class="tier-label">S</div>
+            <div class="tier-characters" id="s-tier-female"></div>
+        </div>
+
+        <div class="tier-row a-tier">
+            <div class="tier-label">A</div>
+            <div class="tier-characters" id="a-tier-female"></div>
+        </div>
+
+        <div class="tier-row b-tier">
+            <div class="tier-label">B</div>
+            <div class="tier-characters" id="b-tier-female"></div>
+        </div>
+
+        <div class="tier-row c-tier">
+            <div class="tier-label">C</div>
+            <div class="tier-characters" id="c-tier-female"></div>
+        </div>
+
+        <div class="tier-row d-tier">
+            <div class="tier-label">D</div>
+            <div class="tier-characters" id="d-tier-female"></div>
+        </div>
+    </div>
+
+</div>
+
+   <script>
+
+const femaleCharacters = [
+    {name: "Рем", img: "https://i.imgur.com/8Km9tLL.jpg", tier: "s"},
+    {name: "Марин Китагава", img: "https://i.imgur.com/3ZQ3Z6B.jpg", tier: "s"},
+
+    {name: "Мегумин", img: "https://i.imgur.com/JYUB0m3.jpg", tier: "a"},
+    {name: "Кагуя Синомия", img: "https://i.imgur.com/jTq7FQp.jpg", tier: "a"},
+
+    {name: "Асуна", img: "https://i.imgur.com/1bX5QH6.jpg", tier: "b"},
+    {name: "Незуко", img: "https://i.imgur.com/e7hF7pG.jpg", tier: "b"},
+
+    {name: "Сакура", img: "https://i.imgur.com/0y0y0y0.jpg", tier: "c"},
+
+    {name: "Хината", img: "https://i.imgur.com/2yaf2wb.jpg", tier: "d"}
+];
+
+const tierMap = {
+    s: 's-tier-female',
+    a: 'a-tier-female',
+    b: 'b-tier-female',
+    c: 'c-tier-female',
+    d: 'd-tier-female'
+};
+
+function createCard(char){
+    const div = document.createElement('div');
+    div.className = 'tier-item';
+
+    div.innerHTML = `
+        <img src="${char.img}" onerror="this.src='https://via.placeholder.com/100'">
+        <span>${char.name}</span>
+    `;
+
+    return div;
+}
+
+function render(){
+    // очистка
+    Object.values(tierMap).forEach(id => {
+        document.getElementById(id).innerHTML = '';
+    });
+
+    // добавление
+    femaleCharacters.forEach(char => {
+        const card = createCard(char);
+        document.getElementById(tierMap[char.tier]).appendChild(card);
+    });
+}
+
+render();
+
+</script>
+</body>
+</html>
