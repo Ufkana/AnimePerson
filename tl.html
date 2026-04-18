@@ -112,6 +112,8 @@ body{
 
 .menu-list{
     list-style:none;
+    padding:0;
+    margin:0;
 }
 
 .menu-link{
@@ -187,6 +189,40 @@ body{
     white-space:pre-wrap;
 }
 
+.post-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:12px;
+}
+
+.read-more-btn,
+.delete-btn{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.read-more-btn{
+    background:#8b5cf6;
+    color:#fff;
+}
+
+.read-more-btn:hover{
+    background:#6d28d9;
+}
+
+.delete-btn{
+    background:#ff4281;
+    color:#fff;
+}
+
+.delete-btn:hover{
+    background:#dc1f6f;
+}
+
 /* ================== КНОПКА + ================== */
 .add-post-btn{
     position:fixed;
@@ -202,6 +238,10 @@ body{
     cursor:pointer;
     z-index:999;
     box-shadow:0 10px 25px rgba(139,92,246,.5);
+}
+
+.add-post-btn:hover{
+    transform:scale(1.05);
 }
 
 /* форма */
@@ -240,6 +280,13 @@ body{
     color:#fff;
     cursor:pointer;
 }
+.post-text{
+    line-height:1.5;
+    color:#eee;
+    white-space:pre-wrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
 </style>
 </head>
 <body>
@@ -251,7 +298,7 @@ body{
 <div class="bg-overlay"></div>
 
 <!-- Гамбургер -->
-<button class="menu-toggle" id="menuToggle">
+<button class="menu-toggle" id="menu-toggle" type="button">
 <span></span>
 <span></span>
 <span></span>
@@ -275,7 +322,7 @@ body{
 <div id="posts">
 <div class="post">
 <div class="post-header">
-<img src="https://i.imgur.com/8Km9tLL.png" class="post-avatar">
+<img src="https://i.imgur.com/8Km9tLL.png" class="post-avatar" alt="avatar">
 <div>
 <div class="post-name">Аноним</div>
 <small>18.04.2026</small>
@@ -289,14 +336,14 @@ body{
 </div>
 
 <!-- кнопка -->
-<button class="add-post-btn" id="addBtn">+</button>
+<button class="add-post-btn" id="add-post-btn" type="button">+</button>
 
 <!-- форма -->
-<div class="post-form" id="postForm">
-<input placeholder="Имя">
-<input placeholder="URL аватара">
-<textarea rows="5" placeholder="Сообщение"></textarea>
-<button>Отправить</button>
+<div class="post-form" id="post-form">
+<input id="post-name" placeholder="Имя">
+<input id="post-avatar" placeholder="URL аватара">
+<textarea id="post-text" rows="5" placeholder="Сообщение"></textarea>
+<button id="post-send" type="button">Отправить</button>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -325,8 +372,12 @@ const textInput = document.getElementById("post-text");
 const sendBtn = document.getElementById("post-send");
 const addBtn = document.getElementById("add-post-btn");
 const postForm = document.getElementById("post-form");
+const menuToggle = document.getElementById("menu-toggle");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
 let currentUserName = localStorage.getItem("currentUserName") || "Аноним";
+window.postTextMap = {};
 
 // ================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==================
 function esc(str) {
@@ -352,28 +403,31 @@ function loadPosts() {
         const isOwnPost = post.name === currentUserName;
         const longText = post.text.length > 150;
 
+        window.postTextMap[postId] = post.text;
+
         let html = `
           <div class="post">
             <div class="post-header">
               <img class="post-avatar" src="${post.avatar || 'https://i.imgur.com/8Km9tLL.png'}" alt="avatar">
               <div>
                 <div class="post-name">${esc(post.name)}</div>
-                <small>${post.date}</small>
+                <small>${esc(post.date)}</small>
               </div>
             </div>
             <div class="post-text" id="text-${postId}">
               ${esc(longText ? shortText(post.text) : post.text)}
-            </div>`;
+            </div>
+            <div class="post-actions">`;
 
         if (longText) {
-          html += `<button class="read-more-btn" onclick="togglePost('${postId}')">Прочитать полностью</button>`;
+          html += `<button class="read-more-btn" type="button" onclick="togglePost('${postId}', this)">Прочитать полностью</button>`;
         }
 
         if (isOwnPost) {
-          html += `<button class="delete-btn" onclick="deletePost('${postId}')">Удалить</button>`;
+          html += `<button class="delete-btn" type="button" onclick="deletePost('${postId}')">Удалить</button>`;
         }
 
-        html += `</div>`;
+        html += `</div></div>`;
         postsContainer.innerHTML += html;
       });
     });
@@ -410,28 +464,32 @@ sendBtn.addEventListener("click", async () => {
 
 // ================== УДАЛЕНИЕ ПОСТА ==================
 window.deletePost = async function(postId) {
-  if (confirm("Удалить этот пост навсегда?")) {
-    try {
-      await db.collection("posts").doc(postId).delete();
-    } catch (e) {
-      alert("Не удалось удалить пост");
-    }
+  if (!confirm("Удалить этот пост навсегда?")) return;
+  try {
+    await db.collection("posts").doc(postId).delete();
+  } catch (e) {
+    alert("Не удалось удалить пост");
   }
 };
 
 // ================== РАЗВЕРНУТЬ/СВЕРНУТЬ ТЕКСТ ==================
-window.togglePost = function(postId) {
+window.togglePost = function(postId, button) {
   const textEl = document.getElementById(`text-${postId}`);
-  // Здесь можно улучшить логику, но для простоты оставим базовую
-  // (полная реализация требует хранения состояния)
-  alert("Полный текст: нажми 'Прочитать полностью' ещё раз для скрытия (пока упрощённо)");
+  const fullText = window.postTextMap[postId] || "";
+  const isExpanded = button.dataset.open === "1";
+
+  if (isExpanded) {
+    textEl.textContent = shortText(fullText);
+    button.textContent = "Прочитать полностью";
+    button.dataset.open = "0";
+  } else {
+    textEl.textContent = fullText;
+    button.textContent = "Скрыть";
+    button.dataset.open = "1";
+  }
 };
 
 // ================== МЕНЮ ==================
-const menuToggle = document.getElementById('menu-toggle');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('overlay');
-
 function toggleMenu() {
   menuToggle.classList.toggle('open');
   sidebar.classList.toggle('open');
@@ -449,13 +507,6 @@ addBtn.addEventListener("click", () => {
 // ================== ЗАПУСК ==================
 nameInput.value = currentUserName;
 loadPosts();
-</script>
-
-<!-- Твой поисковый скрипт (оставил без изменений) -->
-<script>
-  // ... (твой оригинальный поисковый код с categories) ...
-  const categories = [ /* вставь сюда свой массив categories */ ];
-  // (если нужно — скажи, я добавлю полностью)
 </script>
 </body>
 </html>
