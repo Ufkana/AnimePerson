@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Камина | Биография</title>
+  <link rel="icon" href="kamina.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/aizen.mp4" type="video/mp4">
+</video>
+
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../men.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Камина</h1>
+      <div class="bio-subtitle">Tengen Toppa Gurren Lagann</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Камина — харизматичный и бесстрашный лидер из подземной деревни,
+          мечтающий выйти на поверхность и увидеть настоящий мир.
+        </p>
+        <p>
+          Он становится символом восстания против ограничений судьбы,
+          вдохновляя людей бороться за свободу и будущее.
+        </p>
+        <p>
+          Вместе с Симоном он поднимается на поверхность и начинает путь,
+          который изменит судьбу всего человечества.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Камина — высокий мускулистый мужчина с тёмными волосами,
+          яркими солнечными очками и плащом, который стал его символом.
+        </p>
+        <p>
+          Его образ всегда выделяется уверенностью и яркой энергией,
+          которую он излучает в любой ситуации.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Камина невероятно уверенный, смелый и вдохновляющий человек.
+          Он никогда не сомневается в победе и всегда идёт вперёд.
+        </p>
+        <p>
+          Его вера в себя и других людей способна поднимать даже самых отчаявшихся.
+        </p>
+        <p>
+          Камина — символ свободы, силы духа и стремления пробить любые границы.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

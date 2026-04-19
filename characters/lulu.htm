@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Лелуш Британский | Биография</title>
+  <link rel="icon" href="lelouch.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/lulu.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../men.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Лелуш Британский</h1>
+      <div class="bio-subtitle">Code Geass</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Лелуш ви Британия — изгнанный принц Священной Британской Империи,
+          лишённый права на трон и отправленный в Японию после политических событий.
+        </p>
+        <p>
+          Получив таинственную силу Гиасс, позволяющую отдавать абсолютные приказы,
+          он принимает личность Зеро и начинает восстание против империи.
+        </p>
+        <p>
+          Его целью становится разрушение жестокого мира,
+          месть за прошлое и создание будущего для своей сестры Наннали.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Лелуш — высокий стройный юноша с бледной кожей,
+          чёрными волосами и фиолетовыми глазами.
+        </p>
+        <p>
+          В обычной жизни он носит школьную форму,
+          а в образе Зеро появляется в чёрном плаще и маске,
+          скрывающей его личность.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Лелуш невероятно умён, расчётлив и обладает выдающимся стратегическим мышлением.
+        </p>
+        <p>
+          Ради своих целей он готов идти на тяжёлые жертвы,
+          однако внутри остаётся человеком,
+          искренне любящим близких.
+        </p>
+        <p>
+          Его трагедия заключается в выборе между добром,
+          властью и ценой мира.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

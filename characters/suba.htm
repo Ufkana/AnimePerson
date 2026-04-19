@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Субару Нацуки | Биография</title>
+  <link rel="icon" href="subaru.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/re0.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../men.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Субару Нацуки</h1>
+      <div class="bio-subtitle">Re:Zero kara Hajimeru Isekai Seikatsu</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Субару Нацуки — обычный японский подросток, который неожиданно
+          переносится в другой мир без объяснений. Оказавшись в незнакомой
+          реальности, он сталкивается с опасностями, магией и жестокими испытаниями.
+        </p>
+        <p>
+          После встречи с Эмилией Субару решает помочь ей и постепенно
+          становится втянутым в события, влияющие на судьбу королевства.
+          Его путь наполнен страданиями, ошибками и постоянной борьбой.
+        </p>
+        <p>
+          Главной особенностью Субару становится способность возвращаться
+          после смерти в определённый момент прошлого, сохраняя воспоминания
+          обо всём пережитом.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Субару — юноша среднего роста с чёрными растрёпанными волосами
+          и выразительными тёмными глазами. Обычно носит спортивную одежду,
+          в которой оказался после переноса в другой мир.
+        </p>
+        <p>
+          Его внешний вид выглядит простым и современным, что резко
+          контрастирует с одеждой жителей фэнтезийного мира.
+          Со временем на лице всё чаще появляются следы усталости
+          и тяжёлых переживаний.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Субару эмоциональный, импульсивный и временами слишком самоуверенный,
+          но при этом искренний и готовый рисковать собой ради близких.
+        </p>
+        <p>
+          Несмотря на страх, боль и многочисленные поражения,
+          он продолжает двигаться вперёд и старается защитить дорогих ему людей.
+          Его сила заключается не в магии, а в упорстве и воле.
+        </p>
+        <p>
+          Постепенно Субару взрослеет, учится принимать помощь окружающих
+          и становится сильнее духовно.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

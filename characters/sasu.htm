@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Саске Учиха | Биография</title>
+  <link rel="icon" href="sasuke.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/us.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../men.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Саске Учиха</h1>
+      <div class="bio-subtitle">Naruto</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Саске Учиха — один из последних представителей клана Учиха,
+          переживший трагедию уничтожения своего рода.
+        </p>
+        <p>
+          После смерти семьи он посвятил жизнь мести своему брату Итачи,
+          стремясь обрести силу любой ценой. Ради этого Саске покидает деревню Листа
+          и идёт собственным путём.
+        </p>
+        <p>
+          Позже, узнав правду о брате,
+          он меняет взгляды и начинает искать смысл справедливости,
+          проходя путь от мести к искуплению.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Саске — стройный юноша с чёрными волосами
+          и тёмными глазами, которые со временем пробуждают силу Шарингана.
+        </p>
+        <p>
+          Его стиль одежды меняется на протяжении истории,
+          отражая взросление и перемены характера.
+          Взгляд Саске почти всегда серьёзен и холоден.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Саске замкнутый, гордый и целеустремлённый.
+          Он редко показывает чувства и предпочитает действовать самостоятельно.
+        </p>
+        <p>
+          Внутри него долгое время борются боль утраты,
+          гнев и желание понять истину.
+          Несмотря на мрачный путь, он способен ценить дружбу и связь с близкими.
+        </p>
+        <p>
+          История Саске показывает,
+          как ненависть может быть преодолена через осознание и прощение.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Лайт Ягами | Биография</title>
+  <link rel="icon" href="light.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="../v/lite.mp4" type="video/mp4">
+</video>
+<div class="bg-overlay"></div>
+<div class="effects-container"></div>
+<div class="neon-flashes"></div>
+
+<div class="overlay"></div>
+
+<a href="../men.htm" class="back-button neon-btn">← Назад</a>
+
+<div class="bio-container">
+  <div class="bio-card">
+    <div class="bio-header">
+      <h1 class="bio-title">Лайт Ягами</h1>
+      <div class="bio-subtitle">Death Note</div>
+    </div>
+
+    <div class="bio-content">
+
+      <section>
+        <h2>Биография</h2>
+        <p>
+          Лайт Ягами — талантливый старшеклассник, известный своим высоким интеллектом
+          и безупречной успеваемостью. Однажды он находит Тетрадь смерти,
+          способную убивать любого человека, чьё имя будет записано в неё.
+        </p>
+        <p>
+          Решив очистить мир от преступников, Лайт принимает образ Киры
+          и начинает собственное правосудие, привлекая внимание полиции
+          и легендарного детектива L.
+        </p>
+        <p>
+          Его борьба постепенно превращается в опасную игру разума,
+          где на кону стоят жизни и судьба всего мира.
+        </p>
+      </section>
+
+      <section>
+        <h2>Внешность</h2>
+        <p>
+          Лайт — привлекательный юноша среднего роста с каштановыми волосами
+          и карими глазами. Обычно выглядит аккуратно и опрятно.
+        </p>
+        <p>
+          Он носит школьную форму или повседневную одежду,
+          сохраняя спокойный и уверенный внешний вид,
+          который скрывает его истинную сущность.
+        </p>
+      </section>
+
+      <section>
+        <h2>Личность</h2>
+        <p>
+          Лайт умён, харизматичен и крайне амбициозен.
+          Он уверен в собственном превосходстве и считает,
+          что именно ему суждено изменить мир.
+        </p>
+        <p>
+          Со временем чувство справедливости сменяется жаждой власти,
+          а холодный расчёт начинает преобладать над человечностью.
+        </p>
+        <p>
+          Лайт является символом того,
+          как благие намерения могут превратиться в тиранию.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const sidebar = document.querySelector('.sidebar');
+const overlay = document.querySelector('.overlay');
+
+function toggleMenu() {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+
+if(menuToggle){
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      toggleMenu();
+    }
+  });
+}
+</script>
+
+</body>
+</html>
