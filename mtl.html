@@ -3,20 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Женский Тир-Лист — WifeHub</title>
+    <title>Мужской Тир-лист</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <video autoplay muted loop playsinline id="bg-video"><source src="v/WF.mp4" type="video/mp4"></video>
     <div class="bg-overlay"></div>
+<style>
+    /* Основные стили для документа */
+    html, body { /* добавляем высоту для корректного отображения фона */
+        min-height: 100%; /* гарантируем, что тело займет всю высоту окна */
+        margin: 0; /* убираем отступы по умолчанию */
+        padding: 0; /* убираем отступы по умолчанию */
+    }
 
+
+    .tier-page { /* контейнер всей страницы тир-листа */
+        position: relative; /* для наложения на фон */
+        z-index: 1001;  /* выше фона и гамбургера */
+        min-height: calc(100vh - 40px); /* учитываем отступы сверху и снизу */
+        display: flex; /* используем флексбокс для вертикального центрирования */
+        flex-direction: column; /* размещаем элементы вертикально */
+        justify-content: center; /* центрируем по вертикали */
+        align-items: center; /* центрируем по горизонтали */
+        padding: 40px 20px; /* отступы вокруг содержимого */
+    }
+
+
+    h2 { /* стиль заголовка */
+        font-family: 'Orbitron', sans-serif; /* стильный шрифт для заголовков */
+        font-size: 2.5rem; /* размер текста заголовка */
+        background: linear-gradient(90deg, #ff6ec7, #a78bfa, #7dd3fc); /* градиентный текст */
+        -webkit-background-clip: text; /* делает текст прозрачным с градиентом */
+        background-clip: text; /* делаем это и для других браузеров */
+        color: transparent; /* скрываем обычный цвет текста */
+        text-align: center; /* выравниваем заголовок по центру */
+        margin-bottom: 40px; /* отступ снизу от заголовка */
+    }
+    .back-button.neon6-btn { /* стиль кнопки возврата */
+  position: fixed; /* фиксируем кнопку на экране */
+  top: 20px; /* отступ сверху для видимости */
+  left: 40px; /* сдвигаем правее гамбургера */
+  z-index: 1002; /* выше гамбургера и сайдбара */
+  padding: 12px 28px; /* увеличиваем размер кнопки */
+  background: rgba(20, 15, 60, 0.7); /* полупрозрачный темный фон */
+  border: 2px solid #a78bfa; /* светлая рамка для контраста */
+  border-radius: 50px; /* более округлая форма */
+  color: #e0e0ff; /* светлый текст */
+  font-family: 'Orbitron', monospace; /* стильный моноширинный шрифт */
+  font-size: 1.4rem; /* размер текста кнопки */
+  font-weight: 500; /* средняя жирность для лучшей читаемости */
+  text-decoration: none; /* убираем подчеркивание */
+  text-shadow: 0 0 12px #a78bfa; /* легкое свечение текста */
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.5); /* мягкое свечение вокруг кнопки */
+  backdrop-filter: blur(10px); /* размываем фон за кнопкой */
+  transition: all 0.3s ease; /* плавные переходы для эффектов */
+}
+
+.back-button.neon6-btn:hover { /* эффект при наведении на кнопку */
+  background: rgba(40, 30, 90, 0.9); /* более темный фон */
+  border-color: #ff6ec7; /* цвет рамки при наведении */
+  box-shadow: 0 0 40px rgba(255, 110, 199, 0.6); /* усиленное свечение */
+  transform: translateY(-3px); /* легкое поднятие кнопки */
+}
+</style>
     <a href="intl.html" class="back-button neon-btn">← Назад</a>
 
         <div class="tier-page">
 
     <div class="tier-header">
-        <h2>ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤМужской ТИР-ЛИСТ (Waifu)</h2>
+        <h2>Тир-лист Мужских Персонажей</h2>
     </div>
 
     <div class="tier-container">
@@ -50,19 +107,29 @@
 
    <script>
 
+// Список мужских персонажей и их ранг.
 const femaleCharacters = [
-    {name: "Рем", img: "https://i.imgur.com/8Km9tLL.jpg", tier: "s"},
-    {name: "Марин Китагава", img: "https://i.imgur.com/3ZQ3Z6B.jpg", tier: "s"},
-
-    {name: "Мегумин", img: "https://i.imgur.com/JYUB0m3.jpg", tier: "a"},
-    {name: "Кагуя Синомия", img: "https://i.imgur.com/jTq7FQp.jpg", tier: "a"},
-
-    {name: "Асуна", img: "https://i.imgur.com/1bX5QH6.jpg", tier: "b"},
-    {name: "Незуко", img: "https://i.imgur.com/e7hF7pG.jpg", tier: "b"},
-
-    {name: "Сакура", img: "https://i.imgur.com/0y0y0y0.jpg", tier: "c"},
-
-    {name: "Хината", img: "https://i.imgur.com/2yaf2wb.jpg", tier: "d"}
+    // s-tier
+    {name: "Саске Учиха", img: "https://i.postimg.cc/vHS8Dbw7/izobrazenie.png", tier: "s"},
+    {name: "Годжо Сатору", img: "https://i.pinimg.com/736x/43/36/eb/4336ebb004136ed75bda0a6b294e1190.jpg", tier: "s"},
+    {name: "Субару Нацуки", img: "https://i.postimg.cc/2jwFsBdX/izobrazenie.png", tier: "s"},
+    {name: "Лелуш Британский", img: "https://i.postimg.cc/zDgFxX0H/izobrazenie.png", tier: "s"},
+    // a-tier
+    
+    {name: "Камина", img: "https://i.postimg.cc/yxTFHWJV/izobrazenie.png", tier: "a"},
+    {name: "Итачи Учиха", img: "https://i.postimg.cc/cJx8MFj5/izobrazenie.png", tier: "a"},
+    {name: "Лайт Ягами", img: "https://i.postimg.cc/h4L7JJ2t/izobrazenie.png", tier: "a"},
+    // b-tier
+    
+    {name: "Килуа Золдик", img: "https://i.postimg.cc/Y2zhr5SY/izobrazenie.png", tier: "b"},
+    
+    // c-tier
+    {name: "Айзен Сосукэ", img: "https://i.postimg.cc/qMrDn34R/izobrazenie.png", tier: "c"},
+    {name: "Гатс", img: "https://i.postimg.cc/pdssMGng/izobrazenie.png", tier: "c"},
+    // d-tier
+    {name: "Си Ян", img: "https://i.postimg.cc/fTFGdb22/izobrazenie.png", tier: "d"},
+    {name: "Феликс", img: "https://i.postimg.cc/jSNZFgnB/image.png", tier: "d"},
+   
 ];
 
 const tierMap = {
